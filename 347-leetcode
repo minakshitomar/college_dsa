@@ -1,0 +1,24 @@
+//347-leetcode
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) 
+    {
+       unordered_map<int,int>freq;
+       //copied the nums vector into the frequency vector.
+       for(int i:nums)freq[i]++;
+       //we copied the frequency vector into the elements vector
+       vector<pair<int, int>>elements(freq.begin(),freq.end());
+       //sorted elements in descending order
+       sort(elements.begin(), elements.end(), [](auto &left, auto &right) 
+       {
+       return left.second > right.second;
+       });
+       //with the help of push_back we inserted the elements into the result using from the elements.
+       vector<int>result;
+       for(int i=0;i<k;i++)
+       {
+        result.push_back(elements[i].first);
+       }
+       return result;
+    }
+};
