@@ -1,0 +1,21 @@
+class Solution {
+    void function(int idx,vector<int>&current_subset,vector<int>&nums,vector<vector<int>>& ans)
+    {
+        if(idx==nums.size())
+        {
+            ans.push_back(current_subset);
+            return;
+        }
+        current_subset.push_back(nums[idx]);
+        function(idx+1,current_subset,nums,ans);
+        current_subset.pop_back();
+        function(idx+1,current_subset,nums,ans);
+    }
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vectorint>>ans;
+        vector<int>current_subset;
+        function(0,current_subset,nums,ans);
+        return ans;
+    }
+};
